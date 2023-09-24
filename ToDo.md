@@ -1,4 +1,4 @@
-#Pendiente:
+# Pendiente:
 
 - Calcular la distribución de probabilidad de la galaxia.
 - Hacer una función que genere un CuerpoOrientado aleatorio
