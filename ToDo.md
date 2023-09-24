@@ -1,6 +1,6 @@
 #Pendiente:
 
-- Decidir si usar coordenadas esfericas o cartesianas.
+- Calcular la distribución de probabilidad de la galaxia.
 - Hacer una función que genere un CuerpoOrientado aleatorio
   - Considerar distintas distribuciones
 - Hacer una función que genere una secuencia de CuerpoOrientados aleatorios
