@@ -1,4 +1,4 @@
-#Pendiente:
+# Pendiente:
 
 - Decidir si usar coordenadas esfericas o cartesianas.
 - Hacer una función que genere un CuerpoOrientado aleatorio
