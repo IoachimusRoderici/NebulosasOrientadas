@@ -1,7 +1,4 @@
 # Pendiente:
 
-- Calcular la distribución de probabilidad de la galaxia.
-- Hacer una función que genere un CuerpoOrientado aleatorio
-  - Considerar distintas distribuciones
-- Hacer una función que genere una secuencia de CuerpoOrientados aleatorios
+- Calcular la distribución galáctica en la coordenada z.
 - Hacer una función que calcule la proyección de un CuerpoOrientado sobre la esfera celeste.
