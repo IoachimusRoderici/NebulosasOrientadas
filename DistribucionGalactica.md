@@ -34,7 +34,7 @@ esta *no es*:
 
 *Figura 1: Una diapositiva proveída por Juana.*
 
-![Diapositiva](diapositiva.png)
+![Diapositiva](diapositiva.jpeg)
 
 ## El método usado por Peluca
 
