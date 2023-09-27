@@ -97,5 +97,5 @@ El algoritmo usado en el poster parece ser:
 Este algoritmo parece no ser correcto porque:
 
 - Normaliza la distribución de masa de una manera que podría ser razonable para una distribución 1D pero no parece serlo para una distribución 2D.
-- Usa el método de la transformación inversa con la CDF de *la* distribución exponencial. Como se mencionó anteriormente,
+- Usa el método de la transformación inversa con la CDF de *la* distribución exponencial (paso 3). Como se mencionó anteriormente,
   esta distribución tiene deacimiento exponencial pero no es *la* distribución exponencial.
