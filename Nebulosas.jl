@@ -3,7 +3,7 @@ module Nebulosas
 include("../MyLib/Julia/MyRandomVectors.jl") #ver https://github.com/IoachimusRoderici/MyLib/tree/main/Julia
 using .MyRandomVectors
 
-include("DistribucionGalactica.jl")
+include("DistribucionGalactica/DistribucionGalactica.jl")
 
 """
 Representa un punto y una orientación.
