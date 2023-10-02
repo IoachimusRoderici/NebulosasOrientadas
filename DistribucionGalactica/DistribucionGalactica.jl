@@ -1,9 +1,14 @@
 using Roots, Distributions
 
 """
-Radio efectivo de la galaxia. ¿Unidades???
+Radio efectivo de la galaxia.
 """
-const R_disc = 3.0
+const R_disc = 3.0 #kpc
+
+"""
+Radio del bulge de la galaxia.
+"""
+const R_bulge = 5 #kpc
 
 """
     CDF(R)
@@ -11,7 +16,7 @@ La función de distribución acumulativa (CDF) calcula la fracción
 de puntos que están a una distancia menor a R del centro de la
 galaxia.
 
-R es un número mayor o igual a cero.
+R (kpc) >= 0.
 """
 CDF(R) = 1 - exp(-R/R_disc) * (1 + R/R_disc)
 
@@ -40,10 +45,19 @@ end
 
 """
     punto_galactico_aleatorio()
-Elige un punto aleatorio en el plano, con una distribución de probabilidad
+    punto_galactico_aleatorio(n)
+Elige n puntos aleatorios en el espacio, con una distribución de probabilidad
 consistente con la distribución de masa de la galaxia.
+La versión sin n devuelve un sólo punto.
 """
 function punto_galactico_aleatorio()
     θ = rand(Uniform(0, 2*π))
-    R_aleatorio() * [cos(θ), sin(θ)]
+    R = R_aleatorio()
+
+    z_max = R_bulge * exp(-R/R_disc)
+    z = rand(Uniform(-z_max, z_max))
+    
+    [R * cos(θ), R * sin(θ), z]
 end
+
+punto_galactico_aleatorio(n) = [punto_galactico_aleatorio() for i in 1:n]
