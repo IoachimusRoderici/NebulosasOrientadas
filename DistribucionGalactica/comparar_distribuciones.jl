@@ -1,10 +1,10 @@
-using Plots
+using Plots, Measures
 
 include("DistribucionGalactica.jl")
 
 n_samples = 2000
-R_min = 0.1 #kpc
-R_max = 20.0  #kpc
+R_min = 0.0 #kpc
+R_max = 50.0  #kpc
 
 #Distribución esperada:
 x_cdf = LinRange(R_min, R_max, 100)
@@ -40,7 +40,7 @@ z_poster = getindex.(puntos_poster, 3)
 
 
 #Comparar distribución de densidad del disco:
-plot1 = plot(x_cdf, y_cdf, label="esperada", linewidth=2)
+plot1 = plot(x_cdf, y_cdf, label="Teórica", linewidth=2)
 plot!(plot1, R_peluca,       (1:n_samples)./n_samples, label="Peluca", linewidth=2)
 plot!(plot1, sort(R_poster), (1:n_samples)./n_samples, label="Poster", linewidth=2)
 xlabel!(plot1, "R (kpc)")
@@ -49,7 +49,7 @@ title!(plot1, "Distribuciones de la variable R")
 savefig(plot1, "comparacionR.png")
 
 #Comparar vistas de perfil:
-plot2a = scatter(R_peluca, z_peluca, label="Peluca", aspect_ratio=1, size=(600, 300), ylabel="z (kpc)", title="Cortes transversales de la galaxia")
-plot2b = scatter(R_poster, z_poster, label="Poster", markercolor=:green, aspect_ratio=1, size=(600, 300), xlabel="R (kcp)", ylabel="z (kpc)")
+plot2a = scatter(R_peluca, z_peluca, label="Peluca", aspect_ratio=1, margin=3mm, size=(600, 300), ylabel="z (kpc)", title="Cortes transversales de la galaxia")
+plot2b = scatter(R_poster, z_poster, label="Poster", aspect_ratio=1, margin=3mm, size=(600, 300), xlabel="R (kcp)", ylabel="z (kpc)",  markercolor=:green)
 savefig(plot2a, "perfilPeluca.png")
 savefig(plot2b, "perfilPoster.png")
