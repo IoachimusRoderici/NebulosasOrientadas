@@ -142,8 +142,6 @@ que se obtiene fácilmente de la distribución teórica.
 
 *Figura 2: Distribuciones de probabilidad acumulada de muestras generadas por los dos algoritmos, y de la distribución teórica.*
 
-![Gráfico](comparacionR.png) 
-
 Vemos que la distribución de Peluca sigue de cerca a la CDF teórica, mientras que la distribución del poster tiene un notable sesgo hacia 
 el centro de la galaxia.
 
