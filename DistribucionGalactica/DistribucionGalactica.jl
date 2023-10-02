@@ -70,3 +70,32 @@ function punto_galactico_aleatorio()
 end
 
 punto_galactico_aleatorio(n) = [punto_galactico_aleatorio() for i in 1:n]
+
+"""
+    punto_galactico_aleatorio_cerca_de_la_tierra(distancia)
+Elige un punto aleatorio en el espacio, con una distribución de probabilidad
+consistente con la distribución de masa de la galaxia, recortada a una esfera
+centrada en la tierra.
+distancia es el radio de la esfera (kpc). Tiene que ser menor a 8 kpc.
+"""
+function punto_galactico_aleatorio_cerca_de_la_tierra(distancia)
+    R_tierra = 8.0 #kpc
+    P = Float64[0, 0, 0]
+
+    #Rejection samplig:
+    while norm(P[1]-R_tierra, P[2], P[3]) > distancia
+        #Tomamos R en un anillo centrado en la tierra
+        R = R_aleatorio(R_tierra-distancia, R_tierra+distancia)
+
+        #Tomamos θ en una cuña centrada en la tierra
+        θ_max = asin(distancia/R_tierra)
+        θ = rand(Uniform(-θ_max, θ_max))
+
+        #Elejimos z:
+        z_max = R_bulge * exp(-R/R_disc)
+        z = rand(Uniform(-z_max, z_max))
+
+        P = [R * cos(θ), R * sin(θ), z]
+    
+    return P
+end
