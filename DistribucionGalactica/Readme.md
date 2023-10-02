@@ -107,11 +107,23 @@ El algoritmo usado en el poster parece ser:
 2. Dividir $\epsilon$ por $\Sigma_0$. Esto parece ser una manera de adimensionalizar el intervalo.
 3. Calcular $R$ usando $\epsilon/\Sigma_0$ como variable para la [transformación inversa de la distribución exponencial](https://es.wikipedia.org/wiki/Distribuci%C3%B3n_exponencial#M%C3%A9todos_computacionales).
 4. Generar una variable aleatoria $\varphi$ con distribución uniforme entre $0$ y $2\pi$.
-5. Generar una variable aleatoria $theta$ tal que los vectores unitarios con este ángulo polar tengan una distribución de $z$ uniforme en un intervalo simétrico dado aparentemente arbitrario.
+5. Generar una variable aleatoria $\theta$ tal que los vectores unitarios con este ángulo polar tengan una distribución de $z$ uniforme en un intervalo simétrico dado, aparentemente arbitrario.
 6. Convertir las coordenadas esféricas $R$, $\theta$, y $\varphi$ a coordenadas cartesianas.
 
 Este algoritmo parece no ser correcto porque:
 
 - Normaliza la distribución de masa de una manera que podría ser razonable para una distribución 1D pero no parece serlo para una distribución 2D.
-- Usa el método de la transformación inversa con la CDF de *la* distribución exponencial (paso 3). Como se mencionó anteriormente,
-  esta distribución tiene deacimiento exponencial pero no es *la* distribución exponencial.
+- Usa el método de la transformación inversa con la CDF de *la* distribución exponencial (paso 3).
+
+  Como se mencionó anteriormente, esta distribución tiene deacimiento exponencial pero no es *la* distribución exponencial.
+  
+- Usa el valor de $R$ obtenido del modelo 2D como radio de las coordenadas cilíndricas.
+
+  El radio del modelo 2D debería interpretarse como las distancia al centro de la galaxia no de los puntos en el espacio 3D
+  sino de sus proyecciones sobre el plano $xy$ (en otras palabras, $R$ es el radio de las coordenadas cilíndricas, no de las
+  coordenadas esféricas). Al usar $R$ como el radio de las coordenadas esféricas se introduce un sesgo en la distribución hacia
+  el centro de la galaxia. Como la distribución de por sí tiene un sesgo importante hacia el centro, y como los ángulos polares
+  son cercanos a $90º$, es probale que este sesgo adicional no sea importante.
+  
+- Al usar una distribución para el ángulo polar que no depende de $R$, parecería generar valores de $z$ que crecen linealmente al alejarse
+  del centro de la galaxia, lo cual es muy contrario al efecto deseado.
