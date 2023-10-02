@@ -125,5 +125,42 @@ Este algoritmo parece no ser correcto porque:
   el centro de la galaxia. Como la distribución de por sí tiene un sesgo importante hacia el centro, y como los ángulos polares
   son cercanos a $90º$, es probale que este sesgo adicional no sea importante.
   
-- Al usar una distribución para el ángulo polar que no depende de $R$, parecería generar valores de $z$ que crecen linealmente al alejarse
-  del centro de la galaxia, lo cual es muy contrario al efecto deseado.
+- Al usar una distribución para el ángulo polar que no depende de $R$, genera valores de $z$ en un rango que crece linealmente con $R$.
+
+  Esto hace que el espesor de la galaxia crezca hacia afuera como si fuera el complemento de un como, lo cual es cómicamente distinto de
+  todas las ideas que Peluca tiene sobre la forma de la galaxia.
+
+## Comparación
+
+La distribución del ángulo azimutal es identica (y correcta) en ambos métodos, así que se excluye de esta comparación. Las diferencias relevantes
+están en las coordenadas cilíndricas $R$ y $z$.
+
+La comparación que sigue se basa en mustras de tamaño 2000 generadas usando ambos algoritmos con $R_{min}=0$ y $R_{max}=50$ (los mismos valores usados para el poster).
+
+En la figura 2 se comparan las distribuciones de $R$ generadas por los dos algoritmos. Se grafica la CDF de cada distribución, junto con la CDF
+que se obtiene fácilmente de la distribución teórica.
+
+*Figura 2: Distribuciones de probabilidad acumulada de muestras generadas por los dos algoritmos, y de la distribución teórica.*
+
+![Gráfico](comparacionR.png)
+
+Vemos que la distribución de Peluca sigue de cerca a la CDF teórica, mientras que la distribución del poster tiene un notable sesgo hacia 
+el centro de la galaxia.
+
+Sin embargo, un centro galáctico muy denso parece ser el menos importante de los problemas con la distribución del poster. Como se mencionó
+anteriormente, la seleción de ángulos polares en el algoritmo del poster hace que la forma de la galaxia sea el complemento de un cono.
+Esto implica que el centro de la galaxia tiene espesor 0 (devería ser $2·R_{bulge}$) y que las afueras de la galaxia tienen espesores que tienden
+a infiníto (deverían tender a cero).
+
+Para ilustrar este efecto, la figura 3 grafica un "corte transversal" de la galaxia, según las muestras generadas por ambos algoritmos.
+(Por corte transversal se entiende: la distribución que se obtendría rotando todos los puntos al rededor del eje $z$ para que queden en
+el plano $xz$).
+
+*Figura 3: *
+
+![Gráficos de dispersión](perfilPeluca.png)
+![Gráficos de dispersión](perfilPoster.png)
+
+Queda claro que la distribución usada en el poster difiere considerablemente de la forma real de la galaxia.
+
+Si esta diferencia es significativa para el asunto de las nebulosas y su orientación, es una cuestión que resta por ser respondida.
