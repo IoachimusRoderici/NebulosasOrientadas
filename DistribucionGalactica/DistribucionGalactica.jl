@@ -11,6 +11,15 @@ Radio del bulge de la galaxia.
 const R_bulge = 5 #kpc
 
 """
+    PDF(R)
+La función de distribución de probabilidad (PDF) calcula la densidad
+de puntos a una distancia R del centro de la galaxia.
+
+R (kpc) >= 0.
+"""
+PDF(R) = exp(-R/R_disc)/(2*π*R_disc^2)
+
+"""
     CDF(R)
 La función de distribución acumulativa (CDF) calcula la fracción
 de puntos que están a una distancia menor a R del centro de la
@@ -29,14 +38,14 @@ CDF_inv(x) = find_zero(p -> CDF(p)-x, 1.0)
 
 """
     R_aleatorio()
-    R_aleatorio(R_max, R_min = 0.0)
+    R_aleatorio(R_min, R_max)
 Elige una distancia aleatoria al centro de la galaxia con una distribución
 de probabilidad consistente con la distribución de masa de la galaxia.
 
 Si R_max y R_min están presentes, sólamente se devuelven valores en ese rango.
 """
 R_aleatorio() = CDF_inv(rand())
-function R_aleatorio(R_max, R_min = 0.0)
+function R_aleatorio(R_min, R_max)
     CDF_min = CDF(R_min)
     CDF_max = CDF(R_max)
     U = rand(Uniform(CDF_min, CDF_max))
