@@ -78,7 +78,7 @@ $\theta$ con distribución unforme en $[0, 2\pi)$, y calcula las coordenadas:
 $$ (x, y) = R · (\cos{\theta}, \sin{\theta}) $$
 
 En cuanto a la coordenada $z$, Peluca procedió bajo la hipótesis de que el espesor de la galaxia (es decir, el rango dentro del
-cual se encuantra distribuída la coordenada $z$) es proporcional a la densidad superficial del modelo 2D. Sabiendo que el espesor
+cual se encuentra distribuída la coordenada $z$) es proporcional a la densidad superficial del modelo 2D. Sabiendo que el espesor
 del centro de la galaxia es el diámetro del *bulge*, $2 · R_{bulge}$, esto implica que el rango de la coordenada $z$ es el
 limitado por
 
@@ -86,7 +86,7 @@ $$ \pm\ R_{bulge}\ e^{-R/R_d} $$
 
 No teniendo más información al respecto, Peluca usó una distribución uniforme dentro de este intervalo.
 
-En conclusión, para generar un punto aleatorio en el espacio $P$ con distribución de probabilidad consistente con la 
+En conclusión, para generar un punto aleatorio en el espacio con distribución de probabilidad consistente con la 
 distribución de masa de la galaxia, el algoritmo usado por Peluca es:
 
 1. Generar una variable aleatoria $U$ con distribución uniforme entre $CDF(R_{min})$ y $CDF(R_{max})$.
@@ -119,7 +119,7 @@ Este algoritmo parece no ser correcto porque:
   
 - Usa el valor de $R$ obtenido del modelo 2D como radio de las coordenadas cilíndricas.
 
-  El radio del modelo 2D debería interpretarse como las distancia al centro de la galaxia no de los puntos en el espacio 3D
+  El radio del modelo 2D debería interpretarse como la distancia al centro de la galaxia no de los puntos en el espacio 3D
   sino de sus proyecciones sobre el plano $xy$ (en otras palabras, $R$ es el radio de las coordenadas cilíndricas, no de las
   coordenadas esféricas). Al usar $R$ como el radio de las coordenadas esféricas se introduce un sesgo en la distribución hacia
   el centro de la galaxia. Como la distribución de por sí tiene un sesgo importante hacia el centro, y como los ángulos polares
