@@ -83,7 +83,7 @@ function punto_galactico_aleatorio_cerca_de_la_tierra(distancia)
     P = Float64[0, 0, 0]
 
     #Rejection samplig:
-    while norm(P[1]-R_tierra, P[2], P[3]) > distancia
+    while hypot(P[1]-R_tierra, P[2], P[3]) > distancia
         #Tomamos R en un anillo centrado en la tierra
         R = R_aleatorio(R_tierra-distancia, R_tierra+distancia)
 
@@ -96,6 +96,7 @@ function punto_galactico_aleatorio_cerca_de_la_tierra(distancia)
         z = rand(Uniform(-z_max, z_max))
 
         P = [R * cos(θ), R * sin(θ), z]
+    end
     
     return P
 end
