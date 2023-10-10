@@ -11,6 +11,11 @@ Radio del bulge de la galaxia.
 const R_bulge = 5 #kpc
 
 """
+Distancia del centro de la galaxia a la tierra.
+"""
+const R_tierra = 8.32 #kpc
+
+"""
     PDF(R)
 La función de distribución de probabilidad (PDF) calcula la densidad
 de puntos a una distancia R del centro de la galaxia.
@@ -76,10 +81,9 @@ punto_galactico_aleatorio(n) = [punto_galactico_aleatorio() for i in 1:n]
 Elige un punto aleatorio en el espacio, con una distribución de probabilidad
 consistente con la distribución de masa de la galaxia, recortada a una esfera
 centrada en la tierra.
-distancia es el radio de la esfera (kpc). Tiene que ser menor a 8 kpc.
+distancia es el radio de la esfera (kpc). Tiene que ser menor a R_tierra.
 """
 function punto_galactico_aleatorio_cerca_de_la_tierra(distancia)
-    R_tierra = 8.0 #kpc
     P = Float64[0, 0, 0]
 
     #Rejection samplig:
