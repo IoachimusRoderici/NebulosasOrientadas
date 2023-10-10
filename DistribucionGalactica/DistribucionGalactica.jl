@@ -13,7 +13,7 @@ const R_bulge = 5 #kpc
 """
 Distancia del centro de la galaxia a la tierra.
 """
-const R_tierra = 8.32 #kpc
+const R_tierra = 8 #kpc
 
 """
     PDF(R)
