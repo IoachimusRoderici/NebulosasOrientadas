@@ -55,9 +55,44 @@ $|\mathbf{N}|$ puede ser acotada, *grosso modo*, entre $1\ kpc$ y $3\ kcp$. Esto
 la ubicación de la nebulosa está sobre el segmento de recta descrito por $\mathbf{N} = |\mathbf{N}|\ \hat{N}$.
 
 El hecho de que $\hat{u}'$ es perpendicular a $\hat{N}$, sumado a la observación de más arriba sobre el ángulo
-entre $\hat{u}$ y $\hat{N}$, nos permite acotar $\theta$ al intervalo de $\pm 89º$.
+entre $\hat{u}$ y $\hat{N}$, nos permite acotar $\theta$ al intervalo de $\pm 89º$, y descomponer a $\hat{u}$ en
+$\cos \theta\ \hat{u}' + \sin \theta\ \hat{N}$.
 
 ![figura 3](fig3.png)
+
+# Ya Cómete La Maldita Naranja
+
+Repetimos que nuestro objetivo es acotar el ángulo $\alpha$ formado entre $\hat{u}$ y la línea que une $\mathbf{N}$
+y $\mathbf{C}$. Este ángulo está dado por:
+
+$$ \cos \alpha = \hat{u} · \frac{\mathbf{C} - \mathbf{N}}{|\mathbf{C} - \mathbf{N}|} $$
+
+$$ = \frac{1}{|\mathbf{C} - \mathbf{N}|}(\cos \theta\ \hat{u}' + \sin \theta\ \hat{N}) · (\mathbf{C} - |\mathbf{N}|\ \hat{N}) $$
+
+$$ = \frac{1}{|\mathbf{C} - \mathbf{N}|}(\cos \theta\ \hat{u}'·\mathbf{C} - |\mathbf{N}|\ \cos \theta\ \hat{u}'·\hat{N} + \sin \theta\ \hat{N}·\mathbf{C} - |\mathbf{N}|\ \sin \theta\ \hat{N}^2) $$
+
+$$ = \frac{1}{|\mathbf{C} - \mathbf{N}|}(\cos \theta\ \hat{u}'·\mathbf{C} + \sin \theta\ \hat{N}·\mathbf{C} - |\mathbf{N}|\ \sin \theta) $$
+
+$$ = \frac{1}{|\mathbf{C} - \mathbf{N}|} \left(\cos \theta\ \hat{u}'·\mathbf{C} + \sin \theta\ (\hat{N}·\mathbf{C} - |\mathbf{N}|) \right)$$
+
+Esta expresión se puede simplificar haciendo las siguientes definiciones:
+
+$$ A =: \hat{u}'·\mathbf{C} $$
+
+$$ B =: \hat{N}·\mathbf{C} - |\mathbf{N}| $$
+
+$$ R =: \sqrt{A^2 + B^2} $$
+
+$$ \phi = \arccos \frac{A}{R} $$
+
+Y usando [esta identidad](https://math.stackexchange.com/questions/1076500/transforming-linear-combination-of-the-cosine-and-sine-function):
+
+$$ \cos \alpha = \frac{R}{|\mathbf{C} - \mathbf{N}|}\ \cos (\phi - \theta) $$
+
+En este punto es oportuno notar que Aa$, $B$, y $R$ describen un vector que va desde $\mathbf{N}$ hasta la proyección de
+$\mathbf{C}$ sobre el plano $\Pi$.
+
+
 
 
 
