@@ -117,7 +117,25 @@ Donde los únicos datos no conocidos son $\theta$ y $|\mathbf{N}|$.
 
 Y esta es la expresión a acotar.
 
+## Acotando Cosas
 
+Tenemos entonces una función escalar de dos variables $\theta$ y $|\mathbf{N}|$, y queremos encontrar el máximo y el mínimo
+de esta función en el rectángulo definido por $\theta \in [-89º, 89º]$ y $|\mathbf{N}| \in [1 kpc, 3kpc]$.
+
+La solución más correcta sería encontrar estos extremos analíticamente. Sin embargo, las derivadas parciales de $\cos \alpha$
+son mucho más complejas de lo que uno quiciera calcular a mano, así que este camino no es viable. Esto nos deja con dos alternativas:
+
+1. Usar las cotas de $\theta$ y $|\mathbf{N}|$ para acotar cada uno de los términos en la ecuación de $\cos \alpha$, y luego operar
+   sobre las cotas de los distintos términos para contruir una cota de la expresión entera.
+
+   Este método es subóptimo porque al acotar cada término se pierde información sobre cómo distintos términos se afectan entre sí,
+   y no se obtiene la cota más acotada de todas las cotas.
+
+2. Usar algún método numérico para para encontrar los extremos numéricamente.
+
+   Los resultados así obtenidos son preferibles a los de la otra alternativa, pero el costo computacional puede ser elevado.
+
+Ambas alternativas han de ser probadas, y sus resultados comparados.
 
 
 
