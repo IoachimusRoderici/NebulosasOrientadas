@@ -51,7 +51,7 @@ El catálogo carece de dos datos con los cuales el problema quedaría totalmente
 - La distancia entre la tierra y la nebulosa, en adelante $|\mathbf{N}|$.
 - El ángulo entre $\hat{u}$ y $\hat{u}'$, en adelante $\theta$.
 
-$|\mathbf{N}|$ puede ser acotada, *grosso modo*, entre $1\ kpc$ y $3\ kcp$. Esto nos permite decir que
+$|\mathbf{N}|$ puede ser acotado, *grosso modo*, entre $1\ kpc$ y $3\ kcp$. Esto nos permite decir que
 la ubicación de la nebulosa está sobre el segmento de recta descrito por $\mathbf{N} = |\mathbf{N}|\ \hat{N}$.
 
 El hecho de que $\hat{u}'$ es perpendicular a $\hat{N}$, sumado a la observación de más arriba sobre el ángulo
@@ -94,9 +94,9 @@ $$ B =: \hat{N}·\mathbf{C} - |\mathbf{N}| $$
 
 $$ R =: \sqrt{A^2 + B^2} $$
 
-$$ \phi = \arcsin \frac{B}{R} $$
+$$ \phi =: \arcsin \frac{B}{R} $$
 
-- Por último, toda la expresión que está entre paréntesis en la última ecuación es el producto escalar entre $\hat{u}$ y el vector que va desde $\mathbf{N}$ hasta $\mathbf{C}'$.
+- Por último, toda la expresión que está entre paréntesis en la ecuación de $\cos \alpha$ es el producto escalar entre $\hat{u}$ y el vector que va desde $\mathbf{N}$ hasta $\mathbf{C}'$.
 
   Este producto escalar se puede reescribir como $R\ \cos \gamma$, donde $\gamma = \phi - \theta$ es el ángulo formado entre $\hat{u}$ y el vector que va desde $\mathbf{N}$ hasta $\mathbf{C}'$.
 
@@ -106,36 +106,21 @@ $$ \cos \alpha = \frac{R}{|\mathbf{C} - \mathbf{N}|}\ \cos \gamma $$
 
 ![figura 4](fig4.png)
 
-Finalmente, al expandir todas aquellas definiciones que involucran datos no conocidos obtenemos:
+Finalmente, al expandir todas las definiciones obtenemos:
 
 $$
-\cos \alpha = \sqrt{\frac{A^2 + (\hat{N}·\mathbf{C} - |\mathbf{N}|)^2}{(C_0 - |\mathbf{N}|\hat{N}_0)^2 + |\mathbf{N}|^2(\hat{N}^2_1 + \hat{N}^2_2)}}\ ·
-\cos \left( \arcsin \left( \frac{\hat{N}·\mathbf{C} - |\mathbf{N}|}{\sqrt{A^2 + (\hat{N}·\mathbf{C} - |\mathbf{N}|)^2}} \right) - \theta \right)
+\alpha = \arccos \left[ \frac{\sqrt{(\hat{u}'·\mathbf{C})^2 + (\hat{N}·\mathbf{C} - |\mathbf{N}|)^2}}{| \mathbf{C} - |\mathbf{N}|\hat{N} |}\ ·
+\cos \left( \arcsin \left( \frac{\hat{N}·\mathbf{C} - |\mathbf{N}|}{\sqrt{(\hat{u}'·\mathbf{C})^2 + (\hat{N}·\mathbf{C} - |\mathbf{N}|)^2}} \right) - \theta \right) \right]
 $$
 
 Donde los únicos datos no conocidos son $\theta$ y $|\mathbf{N}|$.
 
-Y esta es la expresión a acotar.
-
-## Acotando Cosas
-
 Tenemos entonces una función escalar de dos variables $\theta$ y $|\mathbf{N}|$, y queremos encontrar el máximo y el mínimo
 de esta función en el rectángulo definido por $\theta \in [-89º, 89º]$ y $|\mathbf{N}| \in [1 kpc, 3kpc]$.
 
-La solución más correcta sería encontrar estos extremos analíticamente. Sin embargo, las derivadas parciales de $\cos \alpha$
-son mucho más complejas de lo que uno quiciera calcular a mano, así que este camino no es viable. Esto nos deja con dos alternativas:
-
-1. Usar las cotas de $\theta$ y $|\mathbf{N}|$ para acotar cada uno de los términos en la ecuación de $\cos \alpha$, y luego operar
-   sobre las cotas de los distintos términos para contruir una cota de la expresión entera.
-
-   Este método es subóptimo porque al acotar cada término se pierde información sobre cómo distintos términos se afectan entre sí,
-   y no se obtiene la cota más acotada de todas las cotas.
-
-2. Usar algún método numérico para para encontrar los extremos numéricamente.
-
-   Los resultados así obtenidos son preferibles a los de la otra alternativa, pero el costo computacional puede ser elevado.
-
-Ambas alternativas han de ser probadas, y sus resultados comparados.
+La solución más deseable sería encontrar estos extremos analíticamente. Sin embargo, las derivadas parciales de $\alpha$
+son mucho más complejas de lo que uno quiciera calcular a mano, así que este camino no es viable. Por lo tanto delegamos este
+trabajo en algún método numérico y listo.
 
 
 
