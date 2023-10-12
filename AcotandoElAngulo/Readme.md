@@ -118,11 +118,8 @@ Donde los únicos datos no conocidos son $\theta$ y $|\mathbf{N}|$.
 Tenemos entonces una función escalar de dos variables $\theta$ y $|\mathbf{N}|$, y queremos encontrar el máximo y el mínimo
 de esta función en el rectángulo definido por $\theta \in [-89º, 89º]$ y $|\mathbf{N}| \in [1 kpc, 3kpc]$.
 
-La solución más deseable sería encontrar estos extremos analíticamente. Sin embargo, las derivadas parciales de $\alpha$
-son mucho más complejas de lo que uno quiciera calcular a mano, así que este camino no es viable. Por lo tanto delegamos este
-trabajo en algún método numérico y listo.
-
-
+La solución más deseable sería encontrar estos extremos analíticamente, pero las derivadas parciales de $\alpha$ son mucho
+más complejas de lo que uno quiciera calcular a mano. Así que delegamos este último paso en algún método numérico y listo.
 
 
 
