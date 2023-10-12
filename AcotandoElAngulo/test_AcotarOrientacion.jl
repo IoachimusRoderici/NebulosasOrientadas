@@ -1,31 +1,43 @@
 include("AcotarOrientacion.jl")
 
 #Datos reales:
-miN = [-1,1,1.0]
-miû = normalize([0.7,0.7,0.3])
-
-α = rad2deg(acos(miû·(C - miN)/norm(C - miN)))
-println("Ángulo real: $α º")
+N = [-1,1,1.0]
+û = normalize([0.7,0.7,0.3])
 
 #Datos observados:
-N̂ = normalize(miN)
-û_pr = normalize(miû - (miû·N̂)*N̂)
+N̂ = normalize(N)
+û_pr = normalize(û - (û·N̂)*N̂)
 nebulosa = NebulosaObservada(N̂, û_pr)
+
+#Ángulos reales:
+θ = acos(û·û_pr)
+α = acos(û·(C - N)/norm(C - N))
 
 #Datos reconstruídos:
 miα(θN)  = α_real(nebulosa, θN[1], θN[2])
 miα2(θN) = -miα(θN)
 
 resultado_min = bboptimize(miα,  SearchRange=box, TraceMode=:silent)
-resultado_max = bboptimize(miα2, SearchRange=box, TraceMode=:silent)
-
 θ_min, N_min = best_candidate(resultado_min)
-θ_min = rad2deg(θ_min)
-α_min = rad2deg(best_fitness(resultado_min))
-θ_max, N_max = best_candidate(resultado_max)
-θ_max = rad2deg(θ_max)
-α_max = rad2deg(-best_fitness(resultado_max))
+α_min = best_fitness(resultado_min)
 
-println("Rango reconstruído: [$α_min º, $α_max º]")
-println("El ángulo mínimo se da con θ=$θ_min º y N=$N_min kpc.")
-println("El ángulo máximo se da con θ=$θ_max º y N=$N_max kpc.")
+resultado_max = bboptimize(miα2, SearchRange=box, TraceMode=:silent)
+θ_max, N_max = best_candidate(resultado_max)
+α_max = -best_fitness(resultado_max)
+
+#Informar:
+println("Datos reales:")
+@show N
+@show û
+println("|N| = $(norm(N))")
+println("θ = $(rad2deg(θ))º")
+println("Ángulo real: $(rad2deg(α))º")
+
+println("\nValores observados:")
+@show N̂
+println("û' = $û_pr")
+
+println("\nValores reconstruídos:")
+println("Rango para α: [$(rad2deg(α_min))º, $(rad2deg(α_max))º]")
+println("El ángulo mínimo se da con θ=$(rad2deg(θ_min))º y N=$N_min kpc.")
+println("El ángulo máximo se da con θ=$(rad2deg(θ_max))º y N=$N_max kpc.")
