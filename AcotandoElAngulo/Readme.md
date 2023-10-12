@@ -51,7 +51,7 @@ El catálogo carece de dos datos con los cuales el problema quedaría totalmente
 - La distancia entre la tierra y la nebulosa, en adelante $|\mathbf{N}|$.
 - El ángulo entre $\hat{u}$ y $\hat{u}'$, en adelante $\theta$.
 
-$|\mathbf{N}|$ puede ser acotada, *grosso modo*, entre $1\ kpc$ y $3\ kcp$. Esto nos permite decir que
+$|\mathbf{N}|$ puede ser acotado, *grosso modo*, entre $1\ kpc$ y $3\ kcp$. Esto nos permite decir que
 la ubicación de la nebulosa está sobre el segmento de recta descrito por $\mathbf{N} = |\mathbf{N}|\ \hat{N}$.
 
 El hecho de que $\hat{u}'$ es perpendicular a $\hat{N}$, sumado a la observación de más arriba sobre el ángulo
@@ -60,7 +60,7 @@ $\cos \theta\ \hat{u}' + \sin \theta\ \hat{N}$.
 
 ![figura 3](fig3.png)
 
-# Ya Cómete La Maldita Naranja
+## El Ángulo En Cuestión
 
 Repetimos que nuestro objetivo es acotar el ángulo $\alpha$ formado entre $\hat{u}$ y la línea que une $\mathbf{N}$
 y $\mathbf{C}$. Este ángulo está dado por:
@@ -75,7 +75,18 @@ $$ = \frac{1}{|\mathbf{C} - \mathbf{N}|}(\cos \theta\ \hat{u}'·\mathbf{C} + \si
 
 $$ = \frac{1}{|\mathbf{C} - \mathbf{N}|} \left(\cos \theta\ \hat{u}'·\mathbf{C} + \sin \theta\ (\hat{N}·\mathbf{C} - |\mathbf{N}|) \right)$$
 
-Esta expresión se puede simplificar haciendo las siguientes definiciones:
+
+En este punto es oportuno hacer algunas observaciones que permitirán simplificar esta última expresión:
+
+- $\hat{u}'$ y $\hat{N}$ forman un conjunto ortonormal que sirve como sistema de coordenadas para el plano $\Pi$.
+- Los coeficientes $\hat{u}'·\mathbf{C}$ y $\hat{N}·\mathbf{C}$ representan la proyección de $\mathbf{C}$ sobre $\Pi$.
+  
+  Esta proyección es importante y será llamada $\mathbf{C}'$.
+  
+- $\hat{u}'$ fue elegido de manera que la componente de $\mathbf{C}'$ en esta dirección es siempre positiva.
+- Los coeficientes $\hat{u}'·\mathbf{C}$ y $\hat{N}·\mathbf{C} - |\mathbf{N}|$ representan al vector que va desde $\mathbf{N}$ hasta $\mathbf{C}'$.
+
+  Resulta conveniente dar nombre al módulo de este vector y al ángulo que forma con $\hat{u}'$:
 
 $$ A =: \hat{u}'·\mathbf{C} $$
 
@@ -83,15 +94,33 @@ $$ B =: \hat{N}·\mathbf{C} - |\mathbf{N}| $$
 
 $$ R =: \sqrt{A^2 + B^2} $$
 
-$$ \phi = \arccos \frac{A}{R} $$
+$$ \phi =: \arcsin \frac{B}{R} $$
 
-Y usando [esta identidad](https://math.stackexchange.com/questions/1076500/transforming-linear-combination-of-the-cosine-and-sine-function):
+- Por último, toda la expresión que está entre paréntesis en la ecuación de $\cos \alpha$ es el producto escalar entre $\hat{u}$ y el vector que va desde $\mathbf{N}$ hasta $\mathbf{C}'$.
 
-$$ \cos \alpha = \frac{R}{|\mathbf{C} - \mathbf{N}|}\ \cos (\phi - \theta) $$
+  Este producto escalar se puede reescribir como $R\ \cos \gamma$, donde $\gamma = \phi - \theta$ es el ángulo formado entre $\hat{u}$ y el vector que va desde $\mathbf{N}$ hasta $\mathbf{C}'$.
 
-En este punto es oportuno notar que Aa$, $B$, y $R$ describen un vector que va desde $\mathbf{N}$ hasta la proyección de
-$\mathbf{C}$ sobre el plano $\Pi$.
+Reemplazando este último producto escalar en la ecuación de $\cos \alpha$ obtenemos la expresión simplificada:
 
+$$ \cos \alpha = \frac{R}{|\mathbf{C} - \mathbf{N}|}\ \cos \gamma $$
+
+![figura 4](fig4.png)
+
+Finalmente, al expandir todas las definiciones obtenemos:
+
+$$
+\alpha = \arccos \left[ \frac{\sqrt{(\hat{u}'·\mathbf{C})^2 + (\hat{N}·\mathbf{C} - |\mathbf{N}|)^2}}{| \mathbf{C} - |\mathbf{N}|\hat{N} |}\ ·
+\cos \left( \arcsin \left( \frac{\hat{N}·\mathbf{C} - |\mathbf{N}|}{\sqrt{(\hat{u}'·\mathbf{C})^2 + (\hat{N}·\mathbf{C} - |\mathbf{N}|)^2}} \right) - \theta \right) \right]
+$$
+
+Donde los únicos datos no conocidos son $\theta$ y $|\mathbf{N}|$.
+
+Tenemos entonces una función escalar de dos variables $\theta$ y $|\mathbf{N}|$, y queremos encontrar el máximo y el mínimo
+de esta función en el rectángulo definido por $\theta \in [-89º, 89º]$ y $|\mathbf{N}| \in [1 kpc, 3kpc]$.
+
+La solución más deseable sería encontrar estos extremos analíticamente. Sin embargo, las derivadas parciales de $\alpha$
+son mucho más complejas de lo que uno quiciera calcular a mano, así que este camino no es viable. Por lo tanto delegamos este
+trabajo en algún método numérico y listo.
 
 
 
