@@ -1,9 +1,13 @@
 module Nebulosas
 
+export CuerpoOrientado
+export nebulosa_aleatoria_alineada
+export nebulosa_aleatoria_homogenea
+
 include("../MyLib/Julia/MyRandomVectors.jl") #ver https://github.com/IoachimusRoderici/MyLib/tree/main/Julia
 using .MyRandomVectors
 
-include("DistribucionGalactica.jl")
+include("DistribucionGalactica/DistribucionGalactica.jl")
 
 """
 Representa un punto y una orientación.
