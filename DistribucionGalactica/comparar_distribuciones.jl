@@ -1,6 +1,7 @@
 using Plots, Measures
 
 include("DistribucionGalactica.jl")
+using .DistribucionGalactica: R_aleatorio, R_bulge, R_disc
 
 n_samples = 2000
 R_min = 0.0 #kpc

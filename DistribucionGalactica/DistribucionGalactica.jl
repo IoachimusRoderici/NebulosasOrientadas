@@ -1,3 +1,5 @@
+module DistribucionGalactica
+
 using Roots, Distributions
 
 """
@@ -78,10 +80,12 @@ punto_galactico_aleatorio(n) = [punto_galactico_aleatorio() for i in 1:n]
 
 """
     punto_galactico_aleatorio_cerca_de_la_tierra(distancia)
-Elige un punto aleatorio en el espacio, con una distribución de probabilidad
+    punto_galactico_aleatorio_cerca_de_la_tierra(distancia, n)
+Elige n puntos aleatorio en el espacio, con una distribución de probabilidad
 consistente con la distribución de masa de la galaxia, recortada a una esfera
 centrada en la tierra.
 distancia es el radio de la esfera (kpc). Tiene que ser menor a R_tierra.
+La versión sin n devuelve un sólo punto.
 """
 function punto_galactico_aleatorio_cerca_de_la_tierra(distancia)
     P = Float64[0, 0, 0]
@@ -104,3 +108,7 @@ function punto_galactico_aleatorio_cerca_de_la_tierra(distancia)
     
     return P
 end
+
+punto_galactico_aleatorio_cerca_de_la_tierra(distancia, n) = [punto_galactico_aleatorio_cerca_de_la_tierra(distancia) for i in 1:n]
+
+end #DistribucionGalactica
