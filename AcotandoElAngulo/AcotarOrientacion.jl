@@ -11,10 +11,10 @@ end
 """
 Rango de distancias de la tierra a las nebulosas.
 """
-const N_rango = (1, 3) #kpc
+const N_rango = (1.0, 3.0) #kpc
 
 """
-Rango de ángulos entre ̂u û_pr.
+Rango de ángulos entre ̂u y û_pr.
 """
 const θ_rango = (deg2rad(-89), deg2rad(89))
 
@@ -41,3 +41,19 @@ function α_real(nebulosa, θ, N)
     acos(cosα)
 end
 
+"""
+    acotar_α(nebulosa)
+
+Calcula (α_min, α_max) para la nebulosa dada.
+"""
+function acotar_α(nebulosa)
+    α(θN)  = α_real(nebulosa, θN[1], θN[2])
+    resultado_min = bboptimize(α,  SearchRange=box, TraceMode=:silent)
+    α_min = best_fitness(resultado_min)
+
+    α2(θN) = -α(θN)
+    resultado_max = bboptimize(α2, SearchRange=box, TraceMode=:silent)
+    α_max = -best_fitness(resultado_max)
+
+    return (α_min, α_max)
+end
