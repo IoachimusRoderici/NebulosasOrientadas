@@ -4,10 +4,10 @@ export CuerpoOrientado
 export nebulosa_aleatoria_alineada
 export nebulosa_aleatoria_homogenea
 
-include("../MyLib/Julia/MyRandomVectors.jl") #ver https://github.com/IoachimusRoderici/MyLib/tree/main/Julia
+include("../../MyLib/Julia/MyRandomVectors.jl") #ver https://github.com/IoachimusRoderici/MyLib/tree/main/Julia
 using .MyRandomVectors
 
-include("DistribucionGalactica/DistribucionGalactica.jl")
+include("DistribucionGalactica.jl")
 using .DistribucionGalactica: punto_galactico_aleatorio, 
 
 """
