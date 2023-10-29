@@ -1,4 +1,4 @@
-module Nebulosas
+module NebulosasAleatorias
 
 export CuerpoOrientado
 export nebulosa_aleatoria_alineada
@@ -8,6 +8,7 @@ include("../MyLib/Julia/MyRandomVectors.jl") #ver https://github.com/IoachimusRo
 using .MyRandomVectors
 
 include("DistribucionGalactica/DistribucionGalactica.jl")
+using .DistribucionGalactica: punto_galactico_aleatorio, 
 
 """
 Representa un punto y una orientación.
@@ -18,21 +19,20 @@ struct CuerpoOrientado
 end
 
 """
-Devuelve un CuerpoOrientado con ubicación aleatoria y orientación
-de distribución homogenea en todas las direcciones.
+Devuelve una nebulosa aleatoria con orientación distribuída homogéneamente
+en todas la direcciones, a no más de 3kpc de la tierra.
 """
 function nebulosa_aleatoria_homogenea()
-    CuerpoOrientado(punto_galactico_aleatorio(), random_direction(3))
+    CuerpoOrientado(punto_galactico_aleatorio_cerca_de_la_tierra(3), random_direction(3))
 end
 
 """
-Devuelve un CuerpoOrientado con ubicación aleatoria y orientación
-hacia el centro de la galaxia con un ángulo de desvío aleatorio
-entre 0 y θ.
+Devuelve una nebulosa aleatoria con orientación distribuída homogéneamente
+en un cono de apertura θ, a no más de 3kpc de la tierra.
 """
 function nebulosa_aleatoria_alineada(θ)
-    X = punto_galactico_aleatorio()
+    X = punto_galactico_aleatorio_cerca_de_la_tierra(3)
     CuerpoOrientado(X, random_direction_inside_cone(normalize(-X), θ))
 end
 
-end #Nebulosas
+end #NebulosasAleatorias
