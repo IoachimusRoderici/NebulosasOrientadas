@@ -119,7 +119,7 @@ Tenemos entonces una función escalar de dos variables $\theta$ y $|\mathbf{N}|$
 de esta función en el rectángulo definido por $\theta \in [-89º, 89º]$ y $|\mathbf{N}| \in [1 kpc, 3kpc]$.
 
 La solución más deseable sería encontrar estos extremos analíticamente, pero las derivadas parciales de $\alpha$ son mucho
-más complejas de lo que uno quiciera calcular a mano. Así que delegamos este último paso en algún método numérico y listo.
+más complejas de lo que uno quisiera calcular a mano. Así que delegamos este último paso en algún método numérico y listo.
 
 
 
