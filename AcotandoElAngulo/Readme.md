@@ -42,8 +42,8 @@ Estos dos datos permiten definir un plano, llamemoslo $\Pi$, que contiene a la t
 
 Todo lo que sabemos de $\hat{u}$ es que está contenido en este plano. Parece razonable agregar la restricción
 de que $\hat{u}$ no esté demasiado cerca de ser paralelo a $\hat{N}$, porque si lo fuera entonces $\hat{u}'$
-no sería observable. Sería bueno que Juana et al. tuvieran a bien aclarar este punto y determinar algún ángulo
-mínimo entre $\hat{u}$ y $\hat{N}$; provisoriamente el valor de 1º parece ser conservador.
+no sería observable (*i.e.*, la nebulosa se vería circular). Suponemos entonces que hay un ángulo de por lo menos
+$1º$ entre $\hat{u}$ y $\hat{N}$.
 
 ## Qué No Sabemos?
 
