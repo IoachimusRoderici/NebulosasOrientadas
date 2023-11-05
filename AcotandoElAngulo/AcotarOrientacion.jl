@@ -1,3 +1,7 @@
+module AcotarOrientacion
+
+export NebulosaObservada, acotar_α
+
 using LinearAlgebra, BlackBoxOptim
 
 """
@@ -57,3 +61,5 @@ function acotar_α(nebulosa)
 
     return (α_min, α_max)
 end
+
+end #AcotarOrientacion
