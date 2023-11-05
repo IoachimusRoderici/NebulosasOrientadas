@@ -8,7 +8,7 @@ include("../../MyLib/Julia/MyRandomVectors.jl") #ver https://github.com/Ioachimu
 using .MyRandomVectors
 
 include("DistribucionGalactica.jl")
-using .DistribucionGalactica: punto_galactico_aleatorio, 
+using .DistribucionGalactica: punto_galactico_aleatorio_cerca_de_la_tierra 
 
 """
 Representa un punto y una orientación.
